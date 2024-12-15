@@ -11,3 +11,16 @@ function getComputerChoice() {
     return move;
 }
 
+function getHumanChoice() {
+    const move = prompt(`enter rock, paper, or scissors.\nenter "stop" to stop the game`).toLowerCase();
+    // console.log(checkValidMove(move))
+    return move;
+}
+
+function checkValidMove(move) {
+    return movesArray.includes(move);
+}
+
+
+// getHumanChoice()
+
