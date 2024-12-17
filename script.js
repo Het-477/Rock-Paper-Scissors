@@ -15,11 +15,11 @@ function getComputerChoice() {
 
 function getHumanChoice() {
     const move = prompt(`enter rock, paper, or scissors.\nenter "stop" to stop the game`).toLowerCase();
-    // console.log(checkValidMove(move))
+    // console.log(isValidMove(move))
     return move;
 }
 
-function checkValidMove(move) {
+function isValidMove(move) {
     return movesArray.includes(move);
 }
 
@@ -30,10 +30,13 @@ function playRound(computerChoice, humanChoice) {
         return `Its a Tie, ${humanChoice} can't beat ${computerChoice}.`;
     }
     if (computerChoice === 'rock' && humanChoice === 'scissors') {
+        computerScore++;
         return `You lose! ${computerChoice} beats ${humanChoice}.`;
     } else if (computerChoice === 'paper' && humanChoice === 'rock') {
+        computerScore++;
         return `You lose! ${computerChoice} beats ${humanChoice}.`;
     } else if (computerChoice === 'scissors' && humanChoice === 'paper') {
+        computerScore++;
         return `You lose! ${computerChoice} beats ${humanChoice}.`;
     }
 
@@ -48,6 +51,8 @@ function playRound(computerChoice, humanChoice) {
     // console.log(humanChoice)
     // console.log(computerChoice)
 }
+
+
 
 console.log(playRound());
 // getHumanChoice()
