@@ -1,4 +1,6 @@
 const movesArray = ["rock", "paper", "scissors"];
+let humanScore = 0;
+let computerScore = 0;
 
 function getRandomIntInclusive(min, max) {
     const minCeiled = Math.ceil(min);
@@ -22,5 +24,7 @@ function checkValidMove(move) {
 }
 
 
+
+console.log(playRound());
 // getHumanChoice()
 
