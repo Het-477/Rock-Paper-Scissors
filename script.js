@@ -48,9 +48,11 @@ function playRound_v3(computerChoice, humanChoice) {
         return `Its a Tie, ${humanChoice} can't beat ${computerChoice}.`;
     }
     if (isComputerWinner(computerChoice, humanChoice)) {
+        computerScore++;
         return `You lose! ${computerChoice} beats ${humanChoice}.`;
     }
     if (isHumanWinner(computerChoice, humanChoice)) {
+        humanScore++;
         return `You win! ${humanChoice} beats ${computerChoice}.`;
     }
 }
