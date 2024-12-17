@@ -23,7 +23,31 @@ function checkValidMove(move) {
     return movesArray.includes(move);
 }
 
+function playRound(computerChoice, humanChoice) {
+    computerChoice = getComputerChoice();
+    humanChoice = getHumanChoice();
+    if (computerChoice === humanChoice) {
+        return `Its a Tie, ${humanChoice} can't beat ${computerChoice}.`;
+    }
+    if (computerChoice === 'rock' && humanChoice === 'scissors') {
+        return `You lose! ${computerChoice} beats ${humanChoice}.`;
+    } else if (computerChoice === 'paper' && humanChoice === 'rock') {
+        return `You lose! ${computerChoice} beats ${humanChoice}.`;
+    } else if (computerChoice === 'scissors' && humanChoice === 'paper') {
+        return `You lose! ${computerChoice} beats ${humanChoice}.`;
+    }
 
+    if (humanChoice === 'rock' && computerChoice === 'scissors') {
+        return `You win! ${humanChoice} beats ${computerChoice}.`;
+    } else if (humanChoice === 'paper' && computerChoice === 'rock') {
+        return `You win! ${humanChoice} beats ${computerChoice}.`;
+    } else if (humanChoice === 'scissors' && computerChoice === 'paper') {
+        return `You win! ${humanChoice} beats ${computerChoice}.`;
+    }
+
+    // console.log(humanChoice)
+    // console.log(computerChoice)
+}
 
 console.log(playRound());
 // getHumanChoice()
