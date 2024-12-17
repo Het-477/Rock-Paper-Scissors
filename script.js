@@ -23,6 +23,27 @@ function isValidMove(move) {
     return movesArray.includes(move);
 }
 
+function playRound_v2(computerChoice, humanChoice) {
+    computerChoice = getComputerChoice();
+    humanChoice = getHumanChoice();
+    if (computerChoice === humanChoice) {
+        return `Its a Tie, ${humanChoice} can't beat ${computerChoice}.`;
+    }
+
+    else if (computerChoice === 'rock' && humanChoice === 'scissors'
+        || computerChoice === 'paper' && humanChoice === 'rock'
+        || computerChoice === 'scissors' && humanChoice === 'paper') {
+        computerScore++;
+        return `You lose! ${computerChoice} beats ${humanChoice}.`;
+    }
+
+    else if (humanChoice === 'rock' && computerChoice === 'scissors'
+        || humanChoice === 'paper' && computerChoice === 'rock'
+        || humanChoice === 'scissors' && computerChoice === 'paper') {
+        return `You win! ${humanChoice} beats ${computerChoice}.`;
+    }
+}
+
 function playRound(computerChoice, humanChoice) {
     computerChoice = getComputerChoice();
     humanChoice = getHumanChoice();
