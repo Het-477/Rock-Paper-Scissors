@@ -66,6 +66,19 @@ function playRound(computerChoice, humanChoice) {
     }
 }
 
+function displayGameResult() {
+    console.log(`~~Final result~~\n
+                PLayer: ${humanScore}\n
+                Computer: ${computerScore}`);
+    if (computerScore > humanScore) {
+        console.log(`You lose, computer won by ${computerScore} : ${humanScore}`);
+    }
+    else if (humanScore === computerScore) {
+        console.log(`Its a Tie! try next time.`);
+    } else {
+        console.log(`Coagulations! you won by ${humanScore} : ${computerScore}`);
+    }
+}
 
 function playGame() {
     console.log(`Welcome to the game of Rock, Paper, Scissors!`);
@@ -79,6 +92,7 @@ function playGame() {
 
         console.log(`Player score: ${humanScore} - Computer score: ${computerScore}`);
     }
+    displayGameResult();
 }
 
 playGame()
