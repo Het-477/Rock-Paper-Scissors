@@ -15,8 +15,12 @@ function getComputerChoice() {
 
 function getHumanChoice() {
     const move = prompt(`enter rock, paper, or scissors.\nenter "stop" to stop the game`);
-    // console.log(isValidMove(move))
-    return move.trim().toLowerCase();
+    if (move === null) return "stop";
+    const trimmedMove = move.trim().toLowerCase();
+    if (trimmedMove === "stop") return "stop";
+    if (isValidMove(trimmedMove)) {
+        return trimmedMove
+    } else alert(`${trimmedMove} s not a valid move`)
 }
 
 function isValidMove(move) {
@@ -39,11 +43,11 @@ function isHumanWinner(computerChoice, humanChoice) {
     }
 }
 
-function playRound_v3(computerChoice, humanChoice) {
+function playRound(computerChoice, humanChoice) {
     computerChoice = getComputerChoice();
     humanChoice = getHumanChoice();
-
     console.log(`Your move: ${humanChoice} \nComputer's move: ${computerChoice}`);
+
     if (computerChoice === humanChoice) {
         return `Its a Tie, ${humanChoice} can't beat ${computerChoice}.`;
     }
@@ -57,62 +61,18 @@ function playRound_v3(computerChoice, humanChoice) {
     }
 }
 
-function playRound_v2(computerChoice, humanChoice) {
-    computerChoice = getComputerChoice();
-    humanChoice = getHumanChoice();
-
-    console.log(`Your move: ${humanChoice} \nComputer's move: ${computerChoice}`);
-    if (computerChoice === humanChoice) {
-        return `Its a Tie, ${humanChoice} can't beat ${computerChoice}.`;
-    }
-
-    else if (computerChoice === 'rock' && humanChoice === 'scissors'
-        || computerChoice === 'paper' && humanChoice === 'rock'
-        || computerChoice === 'scissors' && humanChoice === 'paper') {
-        computerScore++;
-        return `You lose! ${computerChoice} beats ${humanChoice}.`;
-    }
-
-    else if (humanChoice === 'rock' && computerChoice === 'scissors'
-        || humanChoice === 'paper' && computerChoice === 'rock'
-        || humanChoice === 'scissors' && computerChoice === 'paper') {
-        return `You win! ${humanChoice} beats ${computerChoice}.`;
+function playGame() {
+    const game = playRound();
+    for (let round = 1; round < 5; round++) {
+        playRound();
+        game();
     }
 }
 
-function playRound(computerChoice, humanChoice) {
-    computerChoice = getComputerChoice();
-    humanChoice = getHumanChoice();
-
-    console.log(`Your move: ${humanChoice} \nComputer's move: ${computerChoice}`);
-    if (computerChoice === humanChoice) {
-        return `Its a Tie, ${humanChoice} can't beat ${computerChoice}.`;
-    }
-    if (computerChoice === 'rock' && humanChoice === 'scissors') {
-        computerScore++;
-        return `You lose! ${computerChoice} beats ${humanChoice}.`;
-    } else if (computerChoice === 'paper' && humanChoice === 'rock') {
-        computerScore++;
-        return `You lose! ${computerChoice} beats ${humanChoice}.`;
-    } else if (computerChoice === 'scissors' && humanChoice === 'paper') {
-        computerScore++;
-        return `You lose! ${computerChoice} beats ${humanChoice}.`;
-    }
-
-    if (humanChoice === 'rock' && computerChoice === 'scissors') {
-        return `You win! ${humanChoice} beats ${computerChoice}.`;
-    } else if (humanChoice === 'paper' && computerChoice === 'rock') {
-        return `You win! ${humanChoice} beats ${computerChoice}.`;
-    } else if (humanChoice === 'scissors' && computerChoice === 'paper') {
-        return `You win! ${humanChoice} beats ${computerChoice}.`;
-    }
-
-    // console.log(humanChoice)
-    // console.log(computerChoice)
-}
-
-
-
-console.log(playRound_v3());
+console.log(playRound());
+// console.log(playGame())
 // getHumanChoice()
+// console.log(playGame());
+// playGame();
+
 
