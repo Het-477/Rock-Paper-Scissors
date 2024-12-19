@@ -49,6 +49,7 @@ function isHumanWinner(computerChoice, humanChoice) {
 function playRound(computerChoice, humanChoice) {
     computerChoice = getComputerChoice();
     humanChoice = getHumanChoice();
+    if (humanChoice === "stop") return `Game stopped by the user.`;
 
     console.log(`Your move: ${humanChoice} \nComputer's move: ${computerChoice}`);
 
