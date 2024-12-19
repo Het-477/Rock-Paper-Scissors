@@ -20,7 +20,10 @@ function getHumanChoice() {
     if (trimmedMove === "stop") return "stop";
     if (isValidMove(trimmedMove)) {
         return trimmedMove
-    } else alert(`${trimmedMove} s not a valid move`)
+    } else {
+        alert(`${trimmedMove} s not a valid move`);
+        console.log(`Enter one of these moves: ${movesArray}`);
+    }
 }
 
 function isValidMove(move) {
@@ -46,6 +49,7 @@ function isHumanWinner(computerChoice, humanChoice) {
 function playRound(computerChoice, humanChoice) {
     computerChoice = getComputerChoice();
     humanChoice = getHumanChoice();
+
     console.log(`Your move: ${humanChoice} \nComputer's move: ${computerChoice}`);
 
     if (computerChoice === humanChoice) {
@@ -61,15 +65,8 @@ function playRound(computerChoice, humanChoice) {
     }
 }
 
-function playGame() {
-    const game = playRound();
-    for (let round = 1; round < 5; round++) {
-        playRound();
-        game();
-    }
-}
 
-console.log(playRound());
+console.log(playRound())
 // console.log(playGame())
 // getHumanChoice()
 // console.log(playGame());
