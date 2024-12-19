@@ -15,13 +15,13 @@ function getComputerChoice() {
 
 function getHumanChoice() {
     const move = prompt(`enter rock, paper, or scissors.\nenter "stop" to stop the game`);
-    if (move === null) return "stop";
+    if (move === null || move.trim() === "") return "stop";
     const trimmedMove = move.trim().toLowerCase();
     if (trimmedMove === "stop") return "stop";
     if (isValidMove(trimmedMove)) {
         return trimmedMove
     } else {
-        alert(`${trimmedMove} s not a valid move`);
+        alert(`${trimmedMove} is not a valid move`);
         console.log(`Enter one of these moves: ${movesArray}`);
     }
 }
@@ -67,7 +67,22 @@ function playRound(computerChoice, humanChoice) {
 }
 
 
-console.log(playRound())
+function playGame() {
+    console.log(`Welcome to the game of Rock, Paper, Scissors!`);
+    // Game loop which will play 5 rounds 
+    for (let round = 1; round <= 5; round++) {
+        console.log(`Round: ${round}`);
+        const gameResult = playRound();
+        console.log(gameResult);
+
+        if (gameResult === "Game stopped by the user.") break;
+
+        console.log(`Player score: ${humanScore} - Computer score: ${computerScore}`);
+    }
+}
+
+playGame()
+// console.log(playRound())
 // console.log(playGame())
 // getHumanChoice()
 // console.log(playGame());
