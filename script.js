@@ -67,9 +67,7 @@ function playRound(computerChoice, humanChoice) {
 }
 
 function displayGameResult() {
-    console.log(`~~Final result~~\n
-                PLayer: ${humanScore}\n
-                Computer: ${computerScore}`);
+    console.log(`~~Final result~~  \nPlayer: ${humanScore}  \nComputer: ${computerScore}`);
     if (computerScore > humanScore) {
         console.log(`You lose, computer won by ${computerScore} : ${humanScore}`);
     }
