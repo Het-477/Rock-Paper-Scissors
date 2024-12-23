@@ -67,19 +67,22 @@ function playRound(computerChoice, humanChoice) {
 }
 
 function displayGameResult() {
-    console.log(`~~Final result~~  \nPlayer: ${humanScore}  \nComputer: ${computerScore}`);
+    console.log(`~~Final result~~  
+        \nPlayer: ${humanScore}  
+        \nComputer: ${computerScore}`);
+
     if (computerScore > humanScore) {
         console.log(`You lose, computer won by ${computerScore} : ${humanScore}`);
-    }
-    else if (humanScore === computerScore) {
+    } else if (humanScore === computerScore) {
         console.log(`Its a Tie! try next time.`);
     } else {
-        console.log(`Coagulations! you won by ${humanScore} : ${computerScore}`);
+        console.log(`Congratulations! you won by ${humanScore} : ${computerScore}`);
     }
 }
 
 function playGame() {
     console.log(`Welcome to the game of Rock, Paper, Scissors!`);
+
     // Game loop which will play 5 rounds 
     for (let round = 1; round <= 5; round++) {
         console.log(`Round: ${round}`);
@@ -90,14 +93,9 @@ function playGame() {
 
         console.log(`Player score: ${humanScore} - Computer score: ${computerScore}`);
     }
+
     displayGameResult();
 }
 
 playGame()
-// console.log(playRound())
-// console.log(playGame())
-// getHumanChoice()
-// console.log(playGame());
-// playGame();
-
 
