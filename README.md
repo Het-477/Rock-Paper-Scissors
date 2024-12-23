@@ -28,13 +28,13 @@ This project is a basic implementation of the Rock-Paper-Scissors game using HTM
 ## Installation
 
 1. Clone the repository:
-    ```sh
-    git clone https://github.com/your-username/rock-paper-scissors.git
-    ```
+```sh
+   git clone https://github.com/your-username/rock-paper-scissors.git
+```
 2. Navigate to the project directory:
-    ```sh
-    cd rock-paper-scissors
-    ```
+```sh
+   cd rock-paper-scissors
+```
 
 ## Usage
 
