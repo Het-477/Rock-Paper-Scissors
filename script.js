@@ -14,7 +14,7 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-    const move = prompt(`enter rock, paper, or scissors.\nenter "stop" to stop the game`);
+    const move = prompt(`enter rock, paper, or scissors.\npress F12 on your keyboard to see the game status\nenter "stop" to stop the game`);
     if (move === null || move.trim() === "") return "stop";
     const trimmedMove = move.trim().toLowerCase();
     if (trimmedMove === "stop") return "stop";
