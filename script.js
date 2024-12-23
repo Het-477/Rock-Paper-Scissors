@@ -26,10 +26,12 @@ function getHumanChoice() {
     }
 }
 
+// Checks if the move is valid or not
 function isValidMove(move) {
     return movesArray.includes(move);
 }
 
+// Determines the winner of each round
 function isComputerWinner(computerChoice, humanChoice) {
     if (computerChoice === 'rock' && humanChoice === 'scissors'
         || computerChoice === 'paper' && humanChoice === 'rock'
@@ -46,6 +48,7 @@ function isHumanWinner(computerChoice, humanChoice) {
     }
 }
 
+// Plays a single round of the game
 function playRound(computerChoice, humanChoice) {
     computerChoice = getComputerChoice();
     humanChoice = getHumanChoice();
@@ -97,5 +100,5 @@ function playGame() {
     displayGameResult();
 }
 
-playGame()
+playGame();
 
