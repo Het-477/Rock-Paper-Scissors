@@ -3,7 +3,7 @@ const movesArray = ['rock', 'paper', 'scissors'];
 let humanMove = '';
 let computerMove = '';
 
-function getPlayerMove() {
+function getPlayerMoveAndPlayRound() {
     let movesMenu = document.querySelector("#moves-menu");
 
     movesMenu.addEventListener("click", (e) => {
@@ -41,8 +41,13 @@ function getComputerMove() {
 }
 
 function playRound(playerMove, computerMove) {
-    console.log(playerMove)
-    console.log(computerMove)
+    // getPlayerMoveAndPlayRound()
+    console.log(`You choose: ${playerMove}`)
+    console.log(`AI choose: ${computerMove}`)
 }
 
-getPlayerMove()
+
+
+// playRound()
+getPlayerMoveAndPlayRound()
+
