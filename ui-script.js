@@ -4,7 +4,7 @@ const roundResultText = document.querySelector("#round-result");
 const playerScoreText = document.querySelector("#player-score");
 const computerScoreText = document.querySelector("#computer-score");
 
-let humanMove = '';
+let playerMove = '';
 let computerMove = '';
 let playerScore = 0;
 let computerScore = 0;
@@ -20,22 +20,22 @@ function getPlayerMoveAndPlayRound() {
 
         switch (move.id) {
             case 'rock':
-                humanMove = 'rock';
+                playerMove = 'rock';
                 break;
 
             case 'paper':
-                humanMove = 'paper';
+                playerMove = 'paper';
                 break;
 
             case 'scissors':
-                humanMove = 'scissors';
+                playerMove = 'scissors';
                 break;
 
             default:
                 console.log('Invalid move');
         }
         // plays a single round
-        playRound(humanMove, getComputerMove())
+        playRound(playerMove, getComputerMove())
 
         // updates the round's score after each round
         updateRoundResult();
