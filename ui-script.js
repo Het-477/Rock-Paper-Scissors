@@ -1,10 +1,10 @@
 const movesArray = ['rock', 'paper', 'scissors'];
 
-const roundResultText = document.querySelector("#round-result"),
-    playerScoreText = document.querySelector("#player-score"),
-    computerScoreText = document.querySelector("#computer-score"),
-    gameResultText = document.querySelector("#game-result"),
-    movesMenu = document.querySelector("#moves-menu");
+const roundResultText = document.querySelector("#round-result");
+const playerScoreText = document.querySelector("#player-score");
+const computerScoreText = document.querySelector("#computer-score");
+const gameResultText = document.querySelector("#game-result");
+const movesMenu = document.querySelector("#moves-menu");
 
 let playerMove = '';
 let computerMove = '';
