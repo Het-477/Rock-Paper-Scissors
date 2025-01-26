@@ -36,9 +36,13 @@ function handlePlayerMove(e) {
     }
 }
 
-function playRound(playerMove, computerMove) {
+function logMoves() {
     console.log(`You choose: ${playerMove}`);
     console.log(`AI choose: ${computerMove}`);
+}
+
+function playRound(playerMove, computerMove) {
+    logMoves()
 
     if (playerMove === computerMove) {
         roundResult = "It's a tie";
