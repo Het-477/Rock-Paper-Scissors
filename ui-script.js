@@ -99,8 +99,9 @@ function displayGameResult() {
         u lost to your own computer by ${computerScore} : ${playerScore} 🤣🤣.
         `;
     } else if (winner === "tie") {
-        gameResultText.textContent = `
+        gameResultText.innerHTML = `
         🤝 IT'S A TIE! 🤝
+        <br>
         Both players reached 5 points simultaneously.
         `;
     }
