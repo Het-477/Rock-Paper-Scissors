@@ -3,6 +3,8 @@ const movesArray = ['rock', 'paper', 'scissors'];
 const roundResultText = document.querySelector("#round-result");
 const playerScoreText = document.querySelector("#player-score");
 const computerScoreText = document.querySelector("#computer-score");
+const gameResultText = document.querySelector("#game-result");
+const movesMenu = document.querySelector("#moves-menu");
 
 let playerMove = '';
 let computerMove = '';
@@ -10,36 +12,43 @@ let playerScore = 0;
 let computerScore = 0;
 let roundResult = '';
 
-updateRoundResult()
+function handlePlayerMove(e) {
+    const move = e.target;
 
-function getPlayerMoveAndPlayRound() {
-    let movesMenu = document.querySelector("#moves-menu");
+    // Validate the move
+    if (!movesArray.includes(move.id)) {
+        console.log("Invalid move");
+        return;
+    }
 
-    movesMenu.addEventListener("click", (e) => {
-        let move = e.target;
+    // Update the round result and scores
+    updateRoundResult();
 
-        switch (move.id) {
-            case 'rock':
-                playerMove = 'rock';
-                break;
+    // Play a round
+    playerMove = move.id;
+    playRound(playerMove, getComputerMove());
 
-            case 'paper':
-                playerMove = 'paper';
-                break;
+    // Check if there is a winner and display the game result
+    const winner = calculateGameWinner();
+    if (winner !== null) {
+        displayGameResult();
+        movesMenu.removeEventListener("click", handlePlayerMove); // Stop the game
+    }
+}
 
-            case 'scissors':
-                playerMove = 'scissors';
-                break;
+function playRound(playerMove, computerMove) {
+    console.log(`You choose: ${playerMove}`);
+    console.log(`AI choose: ${computerMove}`);
 
-            default:
-                console.log('Invalid move');
-        }
-        // plays a single round
-        playRound(playerMove, getComputerMove())
-
-        // updates the round's score after each round
-        updateRoundResult();
-    });
+    if (playerMove === computerMove) {
+        roundResult = "It's a tie";
+    } else if (isPlayerWinner(playerMove, computerMove)) {
+        roundResult = "You Won!";
+        playerScore++;
+    } else {
+        roundResult = "You Lose. AI won";
+        computerScore++;
+    }
 }
 
 function getRandomInt(min, max) {
@@ -53,58 +62,59 @@ function getComputerMove() {
     return computerMove;
 }
 
-// for debugging purposes
-function logRoundScore(playerScore, computerScore) {
-    console.log(`Your score: ${playerScore}`)
-    console.log(`AI score: ${computerScore}`)
-}
-
-function playRound(playerMove, computerMove) {
-    // getPlayerMoveAndPlayRound()
-    console.log(`You choose: ${playerMove}`)
-    console.log(`AI choose: ${computerMove}`)
-
-    if (playerMove === computerMove) {
-        roundResult = 'Its a tie'
-        console.log(roundResult);
-        logRoundScore(playerScore, computerScore)
-    }
-    if (isPlayerWinner(playerMove, computerMove)) {
-        roundResult = `You Won!`;
-        console.log(roundResult);
-        playerScore++;
-        logRoundScore(playerScore, computerScore)
-    }
-    if (isComputerWinner(playerMove, computerMove)) {
-        roundResult = 'You Lose. AI won';
-        console.log(roundResult);
-        computerScore++;
-        logRoundScore(playerScore, computerScore)
-    }
-}
-
 function isPlayerWinner(playerMove, computerMove) {
-    if (playerMove === 'rock' && computerMove === 'scissors'
-        || playerMove === 'paper' && computerMove === 'rock'
-        || playerMove === 'scissors' && computerMove === 'paper') {
-        return true
-    }
+    return (
+        (playerMove === 'rock' && computerMove === 'scissors') ||
+        (playerMove === 'paper' && computerMove === 'rock') ||
+        (playerMove === 'scissors' && computerMove === 'paper')
+    );
 }
 
-function isComputerWinner(playerMove, computerMove) {
-    if (computerMove === 'rock' && playerMove === 'scissors'
-        || computerMove === 'paper' && playerMove === 'rock'
-        || computerMove === 'scissors' && playerMove === 'paper') {
-        return true;
+function calculateGameWinner() {
+    if (playerScore === 5 && computerScore === 5) {
+        return "tie";
+    }
+    if (playerScore === 5) {
+        return "player";
+    }
+    if (computerScore === 5) {
+        return "computer";
+    }
+    return null;
+}
+
+function displayGameResult() {
+    const winner = calculateGameWinner();
+
+    if (winner === "player") {
+        gameResultText.innerHTML = `
+        CONGRATULATIONS!!!!!! 🎉🍾🎉🔥🔥
+        <br>
+        You won the game by ${playerScore} : ${computerScore}.
+        `;
+    } else if (winner === "computer") {
+        gameResultText.innerHTML = `
+        YOU LOSE! 
+        <br>
+        u lost to your own computer by ${computerScore} : ${playerScore} 🤣🤣.
+        `;
+    } else if (winner === "tie") {
+        gameResultText.textContent = `
+        🤝 IT'S A TIE! 🤝
+        Both players reached 5 points simultaneously.
+        `;
     }
 }
 
 function updateRoundResult() {
     roundResultText.textContent = roundResult;
-    playerScoreText.textContent = playerScore;
-    computerScoreText.textContent = computerScore;
+    playerScoreText.textContent = ` ${playerScore} points`;
+    computerScoreText.textContent = ` ${computerScore} points`;
 }
 
-getPlayerMoveAndPlayRound()
-// updateRoundResult()
+function playGame() {
+    movesMenu.addEventListener("click", handlePlayerMove); // Start listening for moves
+}
 
+// Start the game
+playGame();
