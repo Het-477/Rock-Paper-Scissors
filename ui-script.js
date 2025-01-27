@@ -27,6 +27,7 @@ function handlePlayerMove(e) {
     // Play a round
     playerMove = move.id;
     playRound(playerMove, getComputerMove());
+    updateMoves(playerMove, getComputerMove());
 
     // Check if there is a winner and display the game result
     const winner = calculateGameWinner();
@@ -36,9 +37,18 @@ function handlePlayerMove(e) {
     }
 }
 
+// for debugging purposes 
 function logMoves() {
     console.log(`You choose: ${playerMove}`);
     console.log(`AI choose: ${computerMove}`);
+}
+
+function updateMoves(playerMove, computerMove) {
+    const playerMoveText = document.querySelector("#player-move"); 
+    const computerMoveText = document.querySelector("#computer-move"); 
+
+    playerMoveText.textContent = playerMove;
+    computerMoveText.textContent = computerMove;
 }
 
 function playRound(playerMove, computerMove) {
@@ -50,7 +60,7 @@ function playRound(playerMove, computerMove) {
         roundResult = "You Won!";
         playerScore++;
     } else {
-        roundResult = "You Lose. AI won";
+        roundResult = "You Lose. AI won"; // TODO: CHANGE 'AI' WITH 'computer.
         computerScore++;
     }
 }
