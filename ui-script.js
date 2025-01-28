@@ -60,7 +60,7 @@ function playRound(playerMove, computerMove) {
         roundResult = "You Won!";
         playerScore++;
     } else {
-        roundResult = "You Lose. Computer won"; // TODO: CHANGE 'AI' WITH 'computer.
+        roundResult = "You Lose. Computer won";
         computerScore++;
     }
 }
