@@ -26,13 +26,13 @@ function handlePlayerMove(e) {
         return;
     }
 
-    // Update the round result and scores
-    updateRoundResult();
-
+    
+    
     // Play a round
     playerMove = move.id;
     playRound(playerMove, getComputerMove());
     updateMoves(playerMove, getComputerMove());
+    updateRoundResult(); // Update the round result and scores
 
     // Check if there is a winner and display the game result
     const winner = calculateGameWinner();
