@@ -5,6 +5,11 @@ const playerScoreText = document.querySelector("#player-score");
 const computerScoreText = document.querySelector("#computer-score");
 const gameResultText = document.querySelector("#game-result");
 const movesMenu = document.querySelector("#moves-menu");
+const resetBtn = document.querySelector("#reset-btn");
+
+resetBtn.addEventListener("click", () => {
+    location.reload()
+});
 
 let playerMove = '';
 let computerMove = '';
@@ -44,8 +49,8 @@ function logMoves() {
 }
 
 function updateMoves(playerMove, computerMove) {
-    const playerMoveText = document.querySelector("#player-move"); 
-    const computerMoveText = document.querySelector("#computer-move"); 
+    const playerMoveText = document.querySelector("#player-move");
+    const computerMoveText = document.querySelector("#computer-move");
 
     playerMoveText.textContent = playerMove;
     computerMoveText.textContent = computerMove;
